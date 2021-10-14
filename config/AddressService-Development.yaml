@@ -1,0 +1,21 @@
+me:
+  firstName: Jane
+myaddresses:
+  address:
+    home:
+      line1: 432 Elm Ave
+      city: New Home Town
+      state: USA
+      zipcode: 98765
+    lake:
+      line1: 345 Shore Dr
+      city: Lake Town
+      state: USA
+      zipcode: 76543
+addressbook:
+  address:
+    - line1: 789 Nascent Ave
+      line2: Bldg 678
+      city: New Town
+      state: USA
+      zipcode: 45678

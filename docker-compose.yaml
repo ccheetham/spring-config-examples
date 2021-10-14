@@ -1,0 +1,37 @@
+version: "3"
+services:
+  config-server:
+    image: steeltoeoss/config-server
+    volumes:
+      - ./config:/config
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS: file:///config
+      # DEBUG: true
+    ports:
+      - "4000:8888"
+  java-spring:
+    build: java-spring
+    entrypoint:
+      - "./wait-for-it"
+      - "config-server:8888"
+      - "--"
+      - "java"
+      - "-Djava.security.egd=file:/dev/./urandom"
+      - "-jar"
+      - "address-service.jar"
+      - "--spring.cloud.config.uri=http://config-server:8888/"
+    ports:
+      - "4001:8080"
+  csharp-steeltoe:
+    build: csharp-steeltoe
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      SPRING__CLOUD__CONFIG__URI: http://config-server:8888/
+    entrypoint:
+      - "./wait-for-it"
+      - "config-server:8888"
+      - "--"
+      - "./AddressService"
+    ports:
+      - "4002:5000"

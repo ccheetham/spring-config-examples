@@ -1,0 +1,27 @@
+me:
+  firstName: John
+  lastName: Doe
+myaddresses:
+  address:
+    home:
+      line1: 234 Maple St
+      city: Home Town
+      state: USA
+      zipcode: 87654
+    work:
+      line1: 678 Main St
+      line2: Suite 876
+      city: Work Town
+      state: USA
+      zipcode: 45679
+addressbook:
+  address:
+    - line1: "123 Main St"
+      line2: "Apt 4"
+      city: "Any Town"
+      state: "USA"
+      zipcode: "98765"
+    - line1: "456 Elm St"
+      city: "Peoria"
+      state: "IL"
+      zipcode: "61601"
